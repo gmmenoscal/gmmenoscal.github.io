@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Formulario HTML5</title>
+  
+  <!-- Funciones usadas  -->
+  <script>
+    function mySubmitFunction() {
+      alert("Los datos ingresados han pasado la verificacion.\nSe ha enviado la informacion.");
+    }
+    function updateRange1(val) {
+      document.getElementById('rangeValue1').value=val;
+    }
+    function updateRange2(val) {
+      document.getElementById('rangeValue2').value=val;
+    }
+    function updateRange3(val) {
+      document.getElementById('rangeValue3').value=val;
+    }
+    function updateRange4(val) {
+      document.getElementById('rangeValue4').value=val;
+    }
+  </script>
+  
+  <!-- Estilos usados -->
+  <style>
+    body {
+      padding: 2% 5%;
+    }
+    fieldset {
+      padding: 15px 25px;
+      margin-bottom: 2%;
+    }
+    input, meter, progress {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    #submit-button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulario con los nuevos controles HTML5</h1>
+
+  <div id="indicaciones">
+    <ul>
+      <li>Las areas que están delimitadas por una línea son 'fieldsets'.</li>
+      <li>Los textos que aparecen en la parte superior de los fieldsets, sobre la linea, son 'legend'.</li>
+    </ul>
+  </div>
+  <br />
+  
+  <form id="formulario1" onsubmit="mySubmitFunction()">
+    <fieldset form="formulario1" name="fieldset1">
+      <legend>Controles Independientes</legend>
+      <p>
+        <label>Ejemplo de 'Meter':</label>
+        <br/>
+        Value: 1.  Low: 2. High: 9 &nbsp;&nbsp;&nbsp; <meter min="0" max="10" value="1" low="2" high="9"></meter><br/>
+        Value: 2.  Low: 2. High: 9 &nbsp;&nbsp;&nbsp; <meter min="0" max="10" value="2" low="2" high="9"></meter><br/>
+        Value: 5.  Low: 2. High: 6 &nbsp;&nbsp;&nbsp; <meter min="0" max="10" value="5" low="2" high="6"></meter><br/>
+        Value: 10. Low: 5. High: 9 &nbsp; <meter min="0" max="10" value="10" low="5" high="9"></meter><br/>
+        Value: 0.6 (60%) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <meter value="0.6">60%</meter>
+      </p>
+      <br/>
+
+      <p>
+        <label>Ejemplo de 'Progress':</label>
+        <br/>
+        Value: 25.  Max: 100 &nbsp; <progress value="25" max="100"></progress><br />
+        Value: 25.  Max: 50  &nbsp;&nbsp;&nbsp; <progress value="25" max="50"></progress><br />
+        Value: 25.  Max: 30  &nbsp;&nbsp;&nbsp; <progress value="25" max="30"></progress>
+      </p>
+    </fieldset>
+    <br />
+
+    <fieldset form="formulario1" name="fieldset1" disabled="true">
+      <legend>Fieldset disabled</legend>
+      <span>(Los inputs están deshabilitados por el atributo disabled del fieldset)</span>
+      <p>
+        Texto: <br />
+        <input type="text" name="text" />
+      </p>
+      <p>
+        Number: <br />
+        <input type="number" name="no_number" min="1" max="10" />
+      </p>
+    </fieldset>
+    <br />
+
+    <fieldset form="formulario1" name="fieldset2"> 
+      <legend>Controles de tipo Input</legend>
+      <!-- <p>
+        Username: <input type="text" name="text"><br />
+        Encryption: <keygen name="key">
+        <label>*Uso de keygen</label>
+      </p> -->
+      
+      <p>
+        Email: <br />
+        <input type="email" name="user_email" autofocus="autofocus" required/><br />
+        <label>*Pruebe ingresando un email inválido y utilice el botón "Enviar"</label>
+      </p>
+      <br />
+
+      <p>
+        Number: <br />
+        Cualquier numero, menor al numero 5   &nbsp; <input type="number" name="no_number1" max="5" required /><br />
+        Cualquier numero desde 5 en adelante  &nbsp; <input type="number" name="no_number2" min="5" required/><br />
+        Cualquier numero entre el 1 y 10. De 1 en 1. &nbsp; <input type="number" name="no_number3" min="1" max="10" required/><br />
+        Cualquier numero entre el 1 y 10. De 2 en 2. &nbsp; <input type="number" name="no_number4" min="1" max="10" step="2" required/><br />
+      </p>
+      <br />
+
+      <p>
+        Range: <br />
+        Desde 0 a 5   &nbsp; <input type="range" name="no_range1" max="5" onchange="updateRange1(this.value);" required/><input id="rangeValue1" type="text" disabled> <br />
+        Desde 5 a 100 &nbsp; <input type="range" name="no_range2" min="5" onchange="updateRange2(this.value);" required/><input id="rangeValue2" type="text" disabled> <br />
+        Desde 0 a 10. De 1 en 1. &nbsp; <input type="range" name="no_range3" min="0" max="10" onchange="updateRange3(this.value);" required/><input id="rangeValue3" type="text" disabled> <br />
+        Desde 0 a 10. De 2 en 2. &nbsp; <input type="range" name="no_range4" min="0" max="10" step="2" onchange="updateRange4(this.value);" required/><input id="rangeValue4" type="text" disabled> <br />
+      </p>
+      <br />
+
+      <p>
+        Search: <br />
+        <input type="search" name="user_search" placeholder="Ingrese una busqueda" required/><br />
+        <label>Algunos navegadores añaden una 'x' para limpiar el input</label>
+      </p>
+      <br />
+
+      <p>
+        Telefono (en el formato xxx-xxx-xxxx): <br />
+        <input type="tel" name="user_mobile" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br />
+        <label>Solo acepta telefonos con el formato establecido: 3 numeros, guion, 3 numeros, guion, 4 numeros</label>
+      </p>
+      <br />
+
+      <p>
+        URL: <br />
+        <input type="url" name="user_url" required/><br />
+        <label>*Solo acepta URLs que comiencen por “http://”</label>
+      </p>
+    </fieldset>
+    <br />
+    
+    <input id="submit-button" type="submit" value="Enviar" />
+  </form>
+</body>
+</html>
